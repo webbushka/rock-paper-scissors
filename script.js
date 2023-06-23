@@ -64,4 +64,36 @@ const playRound = (playerSelection, computerSelection) => {
   }
 };
 
+// plays five games and decides the winner of all the games
+// I - none
+// O - the winner or the loser, or if it's a tie
+// C - skip
+// E – what if the player hits cancel
+const game = () => {
+  let computerTotalWins = 0;
+  let playerTotalWins = 0;
+  let ties = 0;
+  // Get computer choice
+  let computerChoice = getComputerChoice();
+  // Get player choice
+  let playerChoice = prompt(
+    "Let's play rock, paper, scissors. Enter 'rock', 'paper', or 'scissors' to play."
+  );
+  // Play a round
+  let roundOutcome = playRound(playerChoice, computerChoice);
+  if (roundOutcome === "Player wins") {
+    playerTotalWins++;
+  } else if (roundOutcome === "Computer wins") {
+    computerTotalWins++;
+  } else {
+    ties++;
+  }
+  // Repeat five times
+  // Keep track of the outcome of each round
+
+  // return the overall winner
+};
+
 let computerChoice = getComputerChoice();
+
+game();
