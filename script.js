@@ -27,12 +27,12 @@ const getComputerChoice = () => {
 
   switch (randNum) {
     case 1:
-      return "Rock";
+      return "rock";
     case 2:
-      return "Paper";
+      return "paper";
     case 3:
     default:
-      return "Scissors";
+      return "scissors";
   }
 };
 
@@ -41,9 +41,6 @@ const getComputerChoice = () => {
 // C - skip
 // E - case of playerSelection, player inputing nothing/something unexpected
 const playRound = (playerSelection, computerSelection) => {
-  // Compare playerSelection and computerSelection
-  // Determine who wins
-  // return the outcome
   playerSelection = playerSelection.toLowerCase();
 
   const playerWins =
@@ -54,6 +51,17 @@ const playRound = (playerSelection, computerSelection) => {
     (computerSelection === "rock" && playerSelection === "scissors") ||
     (computerSelection === "scissors" && playerSelection === "paper") ||
     (computerSelection === "paper" && playerSelection === "rock");
+
+  if (playerWins) {
+    console.log(`You win! ${playerSelection} beats ${computerSelection}.`);
+    return "Player wins";
+  } else if (computerWins) {
+    console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
+    return "Computer wins";
+  } else {
+    console.log(`${playerSelection} and ${computerSelection}. It's a tie!`);
+    return "Tie";
+  }
 };
 
 let computerChoice = getComputerChoice();
