@@ -50,10 +50,144 @@ const playRound = (playerSelection, computerSelection) => {
   // falsy values are values that evaluate to false when coersed into a boolean type
   // "", 0, undefined, null, false, NaN
   if (playerWins) {
-    return `You win! ${playerSelection} beats ${computerSelection}`;
+    console.log(`You win! ${playerSelection} beats ${computerSelection}`);
+    return "Player wins";
   } else if (computerWins) {
-    return `You lose! ${computerSelection} beats ${playerSelection}`;
+    console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
+    return "Computer wins";
   } else {
-    return `${playerSelection} and ${computerSelection}. It's a tie!`;
+    console.log(`${playerSelection} and ${computerSelection}. It's a tie!`);
+    return "It's a tie";
   }
 };
+
+// game plays 5 single rounds and reports if the player won, lost, or tied overall
+// I – none
+// O – a string reporting the overall outcome
+// C – skip
+// E – what if the player cancels the prompt
+const game = () => {
+  let playerTotalWins = 0;
+  let computerTotalWins = 0;
+  let ties = 0;
+
+  // Round one
+  let computerChoice = getComputerChoice();
+  let playerChoice = prompt("Enter 'rock', 'paper', 'scissors' to play.");
+  if (playerChoice === null) {
+    return;
+  }
+  while (playerChoice === "") {
+    playerChoice = prompt("Enter 'rock', 'paper', 'scissors' to play.");
+    if (playerChoice === null) {
+      return;
+    }
+  }
+
+  let outcome = playRound(playerChoice, computerChoice);
+  if (outcome === "Player wins") {
+    playerTotalWins++;
+  } else if (outcome === "Computer wins") {
+    computerTotalWins++;
+  } else {
+    ties++;
+  }
+
+  // Round two
+  computerChoice = getComputerChoice();
+  playerChoice = prompt("Enter 'rock', 'paper', 'scissors' to play.");
+  if (playerChoice === null) {
+    return;
+  }
+  while (playerChoice === "") {
+    playerChoice = prompt("Enter 'rock', 'paper', 'scissors' to play.");
+    if (playerChoice === null) {
+      return;
+    }
+  }
+
+  outcome = playRound(playerChoice, computerChoice);
+  if (outcome === "Player wins") {
+    playerTotalWins++;
+  } else if (outcome === "Computer wins") {
+    computerTotalWins++;
+  } else {
+    ties++;
+  }
+
+  // Round three
+  computerChoice = getComputerChoice();
+  playerChoice = prompt("Enter 'rock', 'paper', 'scissors' to play.");
+  if (playerChoice === null) {
+    return;
+  }
+  while (playerChoice === "") {
+    playerChoice = prompt("Enter 'rock', 'paper', 'scissors' to play.");
+    if (playerChoice === null) {
+      return;
+    }
+  }
+
+  outcome = playRound(playerChoice, computerChoice);
+  if (outcome === "Player wins") {
+    playerTotalWins++;
+  } else if (outcome === "Computer wins") {
+    computerTotalWins++;
+  } else {
+    ties++;
+  }
+
+  // Round four
+  computerChoice = getComputerChoice();
+  playerChoice = prompt("Enter 'rock', 'paper', 'scissors' to play.");
+  if (playerChoice === null) {
+    return;
+  }
+  while (playerChoice === "") {
+    playerChoice = prompt("Enter 'rock', 'paper', 'scissors' to play.");
+    if (playerChoice === null) {
+      return;
+    }
+  }
+
+  outcome = playRound(playerChoice, computerChoice);
+  if (outcome === "Player wins") {
+    playerTotalWins++;
+  } else if (outcome === "Computer wins") {
+    computerTotalWins++;
+  } else {
+    ties++;
+  }
+
+  // Round five
+  computerChoice = getComputerChoice();
+  playerChoice = prompt("Enter 'rock', 'paper', 'scissors' to play.");
+  if (playerChoice === null) {
+    return;
+  }
+  while (playerChoice === "") {
+    playerChoice = prompt("Enter 'rock', 'paper', 'scissors' to play.");
+    if (playerChoice === null) {
+      return;
+    }
+  }
+
+  outcome = playRound(playerChoice, computerChoice);
+  if (outcome === "Player wins") {
+    playerTotalWins++;
+  } else if (outcome === "Computer wins") {
+    computerTotalWins++;
+  } else {
+    ties++;
+  }
+
+  if (playerTotalWins > computerTotalWins) {
+    console.log("You win!");
+  } else if (computerTotalWins > playerTotalWins) {
+    console.log("You lose!");
+  } else {
+    console.log("It's a tie!");
+  }
+};
+
+game();
