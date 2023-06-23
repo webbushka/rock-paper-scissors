@@ -67,118 +67,27 @@ const playRound = (playerSelection, computerSelection) => {
 // C – skip
 // E – what if the player cancels the prompt
 const game = () => {
+  let round = 1;
   let playerTotalWins = 0;
   let computerTotalWins = 0;
   let ties = 0;
+  // DRY – Don't Repeat Yourself
 
-  // Round one
-  let computerChoice = getComputerChoice();
-  let playerChoice = prompt("Enter 'rock', 'paper', 'scissors' to play.");
-  if (playerChoice === null) {
-    return;
-  }
-  while (playerChoice === "") {
-    playerChoice = prompt("Enter 'rock', 'paper', 'scissors' to play.");
-    if (playerChoice === null) {
-      return;
+  while (round <= 5) {
+    let computerChoice = getComputerChoice();
+    let playerChoice = getPlayerChoice();
+    console.log({ playerChoice });
+
+    let outcome = playRound(playerChoice, computerChoice);
+    if (outcome === "Player wins") {
+      playerTotalWins++;
+    } else if (outcome === "Computer wins") {
+      computerTotalWins++;
+    } else {
+      ties++;
     }
-  }
 
-  let outcome = playRound(playerChoice, computerChoice);
-  if (outcome === "Player wins") {
-    playerTotalWins++;
-  } else if (outcome === "Computer wins") {
-    computerTotalWins++;
-  } else {
-    ties++;
-  }
-
-  // Round two
-  computerChoice = getComputerChoice();
-  playerChoice = prompt("Enter 'rock', 'paper', 'scissors' to play.");
-  if (playerChoice === null) {
-    return;
-  }
-  while (playerChoice === "") {
-    playerChoice = prompt("Enter 'rock', 'paper', 'scissors' to play.");
-    if (playerChoice === null) {
-      return;
-    }
-  }
-
-  outcome = playRound(playerChoice, computerChoice);
-  if (outcome === "Player wins") {
-    playerTotalWins++;
-  } else if (outcome === "Computer wins") {
-    computerTotalWins++;
-  } else {
-    ties++;
-  }
-
-  // Round three
-  computerChoice = getComputerChoice();
-  playerChoice = prompt("Enter 'rock', 'paper', 'scissors' to play.");
-  if (playerChoice === null) {
-    return;
-  }
-  while (playerChoice === "") {
-    playerChoice = prompt("Enter 'rock', 'paper', 'scissors' to play.");
-    if (playerChoice === null) {
-      return;
-    }
-  }
-
-  outcome = playRound(playerChoice, computerChoice);
-  if (outcome === "Player wins") {
-    playerTotalWins++;
-  } else if (outcome === "Computer wins") {
-    computerTotalWins++;
-  } else {
-    ties++;
-  }
-
-  // Round four
-  computerChoice = getComputerChoice();
-  playerChoice = prompt("Enter 'rock', 'paper', 'scissors' to play.");
-  if (playerChoice === null) {
-    return;
-  }
-  while (playerChoice === "") {
-    playerChoice = prompt("Enter 'rock', 'paper', 'scissors' to play.");
-    if (playerChoice === null) {
-      return;
-    }
-  }
-
-  outcome = playRound(playerChoice, computerChoice);
-  if (outcome === "Player wins") {
-    playerTotalWins++;
-  } else if (outcome === "Computer wins") {
-    computerTotalWins++;
-  } else {
-    ties++;
-  }
-
-  // Round five
-  computerChoice = getComputerChoice();
-  playerChoice = prompt("Enter 'rock', 'paper', 'scissors' to play.");
-  if (playerChoice === null) {
-    return;
-  }
-  while (playerChoice === "") {
-    playerChoice = prompt("Enter 'rock', 'paper', 'scissors' to play.");
-    if (playerChoice === null) {
-      return;
-    }
-  }
-
-  outcome = playRound(playerChoice, computerChoice);
-  if (outcome === "Player wins") {
-    playerTotalWins++;
-  } else if (outcome === "Computer wins") {
-    computerTotalWins++;
-  } else {
-    ties++;
+    round++;
   }
 
   if (playerTotalWins > computerTotalWins) {
