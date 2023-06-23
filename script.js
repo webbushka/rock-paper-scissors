@@ -22,11 +22,38 @@ const getComputerChoice = () => {
 
   switch (randNum) {
     case 1:
-      return "Rock";
+      return "rock";
     case 2:
-      return "Paper";
+      return "paper";
     case 3:
     default:
-      return "Scissors";
+      return "scissors";
+  }
+};
+
+// I – playerSelection and computerSelection, string
+// O – a string declaring the outcome, i.e. "You win! Rock beats Paper"
+// C – skip
+// E – the case of the player's selection. They could input Rock, rock, RoCk, ROCK, etc.
+const playRound = (playerSelection, computerSelection) => {
+  playerSelection = playerSelection.toLowerCase();
+
+  const playerWins =
+    (playerSelection === "rock" && computerSelection === "scissors") ||
+    (playerSelection === "paper" && computerSelection === "rock") ||
+    (playerSelection === "scissors" && computerSelection === "paper");
+  const computerWins =
+    (playerSelection === "scissors" && computerSelection === "rock") ||
+    (playerSelection === "rock" && computerSelection === "paper") ||
+    (playerSelection === "paper" && computerSelection === "scissors");
+
+  // falsy values are values that evaluate to false when coersed into a boolean type
+  // "", 0, undefined, null, false, NaN
+  if (playerWins) {
+    return `You win! ${playerSelection} beats ${computerSelection}`;
+  } else if (computerWins) {
+    return `You lose! ${computerSelection} beats ${playerSelection}`;
+  } else {
+    return `${playerSelection} and ${computerSelection}. It's a tie!`;
   }
 };
