@@ -31,6 +31,25 @@ const getComputerChoice = () => {
   }
 };
 
+// I – none
+// O – a string of the player's choice
+// C – skip
+// E – what if the player hits cancel
+const getPlayerChoice = () => {
+  let playerChoice = prompt("Enter 'rock', 'paper', 'scissors' to play.");
+  if (playerChoice === null) {
+    return;
+  }
+  while (playerChoice === "") {
+    playerChoice = prompt("Enter 'rock', 'paper', 'scissors' to play.");
+    if (playerChoice === null) {
+      return;
+    }
+  }
+
+  return playerChoice;
+};
+
 // I – playerSelection and computerSelection, string
 // O – a string declaring the outcome, i.e. "You win! Rock beats Paper"
 // C – skip
