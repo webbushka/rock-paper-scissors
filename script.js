@@ -70,12 +70,11 @@ const playRound = (playerSelection, computerSelection) => {
 };
 
 const game = () => {
-  let round = 1;
   let playerTotalWins = 0;
   let computerTotalWins = 0;
   let ties = 0;
 
-  while (round <= 5) {
+  for (let round = 1; round <= 5; round++) {
     let computerChoice = getComputerChoice();
     let playerChoice = getPlayerChoice();
     if (!playerChoice) {
@@ -91,9 +90,14 @@ const game = () => {
     } else {
       ties++;
     }
-
-    round++;
   }
+
+  // The above for loop can also be written as a while loop:
+  // let round = 1;
+  // while (round <= 5) {
+  //  ...code to execute
+  //  round ++
+  //}
 
   if (playerTotalWins > computerTotalWins) {
     console.log("You win the game! Refresh to play again!");
