@@ -78,6 +78,10 @@ const game = () => {
   while (round <= 5) {
     let computerChoice = getComputerChoice();
     let playerChoice = getPlayerChoice();
+    if (!playerChoice) {
+      console.log("Game canceled");
+      return;
+    }
 
     let outcome = playRound(playerChoice, computerChoice);
     if (outcome === "Player wins") {
