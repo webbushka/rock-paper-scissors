@@ -96,11 +96,11 @@ const game = () => {
   }
 
   if (playerTotalWins > computerTotalWins) {
-    console.log("You win the game!");
+    console.log("You win the game! Refresh to play again!");
   } else if (computerTotalWins > playerTotalWins) {
-    console.log("You lose the game!");
+    console.log("You lose the game! Refresh to play again!");
   } else {
-    console.log("The game is a tie!");
+    console.log("The game is a tie! Refresh to play again!");
   }
 };
 
