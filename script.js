@@ -77,6 +77,7 @@ const game = () => {
   for (let round = 1; round <= 5; round++) {
     let computerChoice = getComputerChoice();
     let playerChoice = getPlayerChoice();
+    // If player hits cancel
     if (!playerChoice) {
       console.log("Game canceled");
       return;
